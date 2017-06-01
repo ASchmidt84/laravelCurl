@@ -20,7 +20,6 @@ RUN cd /var/www/laravel
 RUN /usr/local/bin/composer require torann/geoip
 RUN /usr/local/bin/composer require geoip2/geoip2
 RUN /usr/local/bin/composer require maxmind-db/reader
-RUN /usr/bin/php artisan geoip:update
 
 EXPOSE 80
 EXPOSE 443
