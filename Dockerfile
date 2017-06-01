@@ -37,9 +37,9 @@ RUN /usr/local/bin/composer require torann/geoip
 RUN /usr/local/bin/composer require geoip2/geoip2
 RUN /usr/local/bin/composer require maxmind-db/reader
 
+RUN /usr/local/bin/composer dump-autoload -o
+
 EXPOSE 80
 EXPOSE 443
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
-ENTRYPOINT ["php", "artisan"]
