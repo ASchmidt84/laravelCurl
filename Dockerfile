@@ -2,7 +2,23 @@
 FROM eboraas/apache-php
 MAINTAINER André Schmidt 
 
-RUN apt-get update && apt-get -y install git curl libcurl3 libcurl3-dev php5-mcrypt php5-json php5-curl php5-redis imagemagick php5-imagick php5-gd && apt-get -y autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get -y install \
+git \
+curl \
+libcurl3 \
+libcurl3-dev \
+php5-mcrypt \
+php5-json \
+php5-curl \
+php5-redis \
+imagemagick \
+php5-gd \
+php5-cli \
+php5-geoip \
+php5-imagick \
+php5-imap \
+php5-xcache \
+&& apt-get -y autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN /usr/sbin/a2enmod rewrite
 
@@ -25,3 +41,5 @@ EXPOSE 80
 EXPOSE 443
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+ENTRYPOINT ["php", "artisan"]
